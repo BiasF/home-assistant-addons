@@ -114,6 +114,9 @@ COPY scripts/docker-prepare.sh /sbin/docker-prepare.sh
 
 WORKDIR /usr/src/paperless
 
+# Install NLTK Data
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data/
+
 # add users, setup scripts
 RUN addgroup --gid 1000 paperless \
     && useradd --uid 1000 --gid paperless --home-dir /usr/src/paperless paperless \
